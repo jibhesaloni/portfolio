@@ -297,13 +297,13 @@ export default function Home() {
 
   // Get unique years for filter dropdown
   const allYears = useMemo(() => {
-    const years = new Set([
-      ...portfolioData.publications.map(p => p.year),
-      ...portfolioData.books.map(b => b.year),
-      ...portfolioData.patents.map(p => p.year)
-    ]);
-    return Array.from(years).sort((a, b) => b - a);
-  }, []);
+  const years = new Set<number>([
+    ...portfolioData.awards.map(a => Number(a.year)),
+    ...portfolioData.patents.map(p => Number(p.year))
+  ]);
+  return Array.from(years).sort((a, b) => b - a);
+}, []);
+
   const handleClearFilters = () => {
     setSearchQuery("");
     setSelectedYear("");
