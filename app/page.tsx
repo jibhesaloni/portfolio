@@ -7,11 +7,13 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import Link from "next/link";
 import { 
   Mail, Phone, MapPin, ExternalLink, Award, BookOpen, Users, Search,
   Building2, GraduationCap, FileText, Copyright, Shield, Trophy, BarChart3, 
   Globe, Linkedin, User, Star, Download, Eye, Briefcase, Target
 } from 'lucide-react';
+import { link } from 'node:fs';
 
 const portfolioData = {
   personal: {
@@ -90,29 +92,108 @@ const portfolioData = {
   ],
   publications: [
     {
-      title: "Deep Learning Approaches for Natural Language Processing in Healthcare",
-      authors: "S. Chen, M. Johnson, R. Lee",
-      journal: "Nature Machine Intelligence",
-      year: "2024",
+      title: "Intrusion Detection for ICMP-Flood Attack",
+      authors: "A. W. Ingle, Mohnish Awade",
+      journal: "International Journal of Research in Computer Science and Information Technology (IJRCSIT)",
+      year: "2013",
       citations: 156,
-      impact: "High Impact"
+      impact: "High Impact",
+      link:" "
     },
     {
-      title: "Federated Learning for Privacy-Preserving AI",
-      authors: "S. Chen, A. Smith, K. Brown",
-      conference: "NeurIPS 2023",
+      title: "Intrusion Detection for TCP-SYNC Flood Attack",
+      authors: "A. W. Ingle, Mohnish Awade",
+      journal: "International Journal of Advanced Research in Computer Science(IJARCS)",
+      year: "2013",
+      citations: 89,
+      impact: "Best Paper Award",
+      link: ""
+    },
+    {
+      title: "Update on Next Generation Network Attacks A Review Paper on Network Attacks Classified into Mobile & Computer Based",
+      authors: "Ansari Mohsin Jaweed Ahmed, Shaikh Mohd Rehan, Anup Ingle, Sanket Lokhande, Rohan Saswadkar",
+      journal: "International Journal of Electrical, Electronics and Computer Systems (IJEECS)",
+      year: "2015",
+      citations: 234,
+      impact: "Most Cited",
+      link: "https://example.com/publication1"
+    },
+    {
+      title: "Statistical Approaches For Network Anomaly Detection For UDP Spoofing",
+      authors: "Anup Ingle, Aditya Wagh, Rajneesh Sharma, Akshay Shikre",
+      journal: "International Journal of Advanced Computational Engineering and Networking",
+      year: "2016",
+      citations: 89,
+      link: ""
+    },
+
+    {
+      title: "DDoS Attack Detection Algorithms Based on Pattern Classification and Machine Learning",
+      authors: "Anup Ingle",
+      journal: "Journal of University of Shanghai for Science and Technology",
+      year: "2021",
+      citations: 89,
+      link: ""
+    },
+    {
+      title: "A review on Ad-Hoc Network In Pervasive Environment",
+      authors: "Pravin G Gawande, Rajendra S Talware, Shailesh V Kulkarni, Anup W Ingle, Milind S Patil, Gajanan H Chavhan",
+      journal: "Journal of Eur. Chem. Bull. 2023",
       year: "2023",
       citations: 89,
-      impact: "Best Paper Award"
+      link: ""
     },
     {
-      title: "Transformers in Computer Vision: A Comprehensive Survey",
-      authors: "S. Chen, et al.",
-      journal: "IEEE TPAMI",
+      title: "Intelligent Conversational Agents Based Custom Question Answering System",
+      authors: "Nitin Sakhare, Jyoti Bangare, Dr. Deepika Ajalkar, Dr. Gajanan Walunjkar, Dr. Madhuri Borawake, Dr. Anup Ingle",
+      journal:  "International Journal of Intelligent Systems and Applications in Engineering, IJISAE,2023",
       year: "2023",
-      citations: 234,
-      impact: "Most Cited"
+      citations: 89,
+      link: "https://ijisae.org/index.php/IJISAE/article/view/2860"
+    },
+    {
+      title: "Artificial intelligence-based classification performance evaluation in monophonic and polyphonic indian classical instruments recognition with hybrid domain features amalgamation",
+      authors: "Chitre, Abhijit V., Wanjale, Kirti, Deshmukh, Aradhanaa, Kosbatwar, Shyamsunder P., Ingle, Anup & Hundekari, Sheela",
+     journal: " Journal of Information and Optimization Sciences",
+      year: "2023",
+      citations: 89,
+      link: "https://www.tarupublications.com/doi/10.47974/JIOS-1345"
+    },
+    {
+      title: "Investigating environmental sustainability applications using advanced monitoring systems.",
+      authors: "Sreenivasulu, K., Yadav, S., Pushpalatha, G., Sethumadhavan, R., Ingle, A., & Vijaya, R.",
+      journal: "The Scientific Temper",
+      year: "2023",
+      citations: 89,
+      link: "https://scientifictemper.com/index.php/tst/article/view/939"
+    },
+    {
+      title: "Researching brain-computer interfaces for enhancing communication and control in neurological disorders.",
+      authors: "Rathore, N., Acharjee2, P. B., Thivyabrabha, K., P, U., Ingle, A., & Davinder kumar. ",
+      journal: "The Scientific Temper",
+      year: "2023",
+      citations: 89,
+      link: "https://scientifictemper.com/index.php/tst/article/view/871"
+    },
+    {
+      title: "Smart Traffic: Integrating Machine Learning, and YOLO for Adaptive Traffic Management System. ",
+      authors: "Nitin Sakhare, Mrunal Hedau, Gokul B., Omkar Malpure, Malpure,Trupti Shah, Shah, Anup Ingle",
+      journal: "International Journal of Intelligent Systems and Applications in Engineering, 12(12s), 347–355.",
+      year: "2024",
+      citations: 89,
+      link: "https://ijisae.org/index.php/IJISAE/article/view/4520"
+    },
+    {
+      title: "Intrusion Detection for ICMP-Flood Attack",
+      authors: "A. W. Ingle, Mohnish Awade",
+      conference: "2nd National Conference on Computer Communication and Information Technology-2013(NC3IT-2013) ",
+      year: "2013",
+      citations: 89,
+      impact: "Best Paper Award",
+      link: ""
     }
+
+
   ],
   awards: [
     {
@@ -139,37 +220,71 @@ const portfolioData = {
       title: "Internet of Things",
       publisher: "Nirali Publication",
       year: "2023",
-      coAuthors: [ "Dr. Anup W. Ingle", "Dr. Amol V. Dhumane"," Dr. Archana Kollu", "Nitin N. Sakhare"]
+      coAuthors: [ "Dr. Anup W. Ingle", "Dr. Amol V. Dhumane"," Dr. Archana Kollu", "Nitin N. Sakhare"],
+      link: "https://www.flipkart.com/internet-things-second-year-sy-degree-artifical-intelligence-data-science-semester-4/p/itmacd4162afea0c",
     },
     {
       title: "FUNDAMENTALS OF ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING",
       publisher: "Nirali Publication",
       year: "2022",
-      coAuthors: ["Dr. Mrunal K. Pathak", "Dr. Anup W. Ingle", "Jyoti S. Chinchole"," Nitin N. Sakhare"]
+      coAuthors: ["Dr. Mrunal K. Pathak", "Dr. Anup W. Ingle", "Jyoti S. Chinchole"," Nitin N. Sakhare"],
+      link:"https://www.flipkart.com/fundamentals-artificial-intelligence-machine-learning-second-year-sy-degree-ai-ml-semester-4/p/itma80b1223298ac"
     },
     {
       title: "MODERNIZED IoT ",
       publisher: "Nirali Publication",
       year: "2022",
-      coAuthors: [ "Nitin N. Sakhare", "Dr. Amol V. Dhumane", "Dr. Anup W. Ingle", "Rushikesh S. Tanksale"]
+      coAuthors: [ "Nitin N. Sakhare", "Dr. Amol V. Dhumane", "Dr. Anup W. Ingle", "Rushikesh S. Tanksale"],
+      link:"https://www.flipkart.com/modernized-iot-final-year-degree-course-electronics-telecommunication-engineering-semester-7-sppu/p/itmad50a3e06e835"
     },
     {
       title: "MOBILE COMPUTING",
       publisher: "Nirali Publication",
       year: "2023",
-      coAuthors: [ "Dr. Archana K. Ratnaparkhi"," Dr. Anup W. Ingle"," Nitin N. Sakhare", "Rushikesh S. Tanksale"]
+      coAuthors: [ "Dr. Archana K. Ratnaparkhi"," Dr. Anup W. Ingle"," Nitin N. Sakhare", "Rushikesh S. Tanksale"],
+      link:"https://www.flipkart.com/mobile-computing-final-year-degree-course-electronics-telecommunication-engineering-semester-8-sppu/p/itma5a016621bb51?pid=9788119115044&lid=LSTBOK97881191150448JUZUP&marketplace=FLIPKART&cmpid=content_book_8965229628_gmc"
     },
     {
       title: "IMAGE PROCESSING",
       publisher: "Nirali Publication",
       year: "2023",
-      coAuthors: [  "Dr. Jayashree P. Tamkhade", "Dr. Deepika Ajalkar", "Dr. Anup W. Ingle", "Rushikesh S. Tanksale"]
+      coAuthors: [  "Dr. Jayashree P. Tamkhade", "Dr. Deepika Ajalkar", "Dr. Anup W. Ingle", "Rushikesh S. Tanksale"],
+      link:"https://www.flipkart.com/image-processing-final-year-degree-course-computer-engineering-semester-8-sppu/p/itm0022ef1f48058"
     },
      {
-      title: "IMAGE PROCESSING",
-      publisher: "Nirali Publication",
+      title: "Video Analytics ",
+      publisher: "Nirali praksahan",
       year: "2023",
-      coAuthors: [  "Dr. Jayashree P. Tamkhade", "Dr. Deepika Ajalkar", "Dr. Anup W. Ingle", "Rushikesh S. Tanksale"]
+      coAuthors: [ " Dr. Lalit V. Patil", "Dr. Anup Ingle", "Dr. Sunita S. Dhotre", "Nitin N. Sakhare"],
+      link:"https://www.flipkart.com/video-analytics-third-year-ty-b-tech-artificial-intelligence-machine-learning-aiml-semester-6-sppu/p/itm06436aa3af9bc?pid=9788119115938&lid=LSTBOK97881191159380XSIPF&marketplace=FLIPKART&cmpid=content_book_8965229628_gmc"
+    },
+    {
+      title: "Industrial Internet of Things",
+      publisher: "Nirali praksahan",
+      year: "2023",
+      coAuthors: [ "Dr. Gajanan Walunjkar"," Dr. Dipesh Pardeshi", "Dr. Archana Ratnaparkhi", "Dr. Anup Ingle"],
+      link:"https://www.flipkart.com/industrial-internet-things-final-year-b-tech-artificial-intelligence-data-science-ai-ds-semester-7-sppu/p/itm957e3a6776d27?pid=9788119117857&lid=LSTBOK9788119117857BXS774&marketplace=FLIPKART&cmpid=content_book_8965229628_gmc"
+    },
+    {
+      title: "Wireless Sensor Networks",
+      publisher: "Nirali praksahan",
+      year: "2023",
+      coAuthors: ["Nitin N. Sakhare", "Dr. Anup W. Ingle"," Dr. Pravin G. Gawande" ],
+      link:"https://www.flipkart.com/wireless-sensor-networks-dbatu-final-year-b-tech-course-electronics-telecommunication-engineering-engineering-semester-7/p/itmab4a57f5dad4e?pid=9788119116942&lid=LSTBOK9788119116942TWLSSS&marketplace=FLIPKART&cmpid=content_book_8965229628_gmc"
+    },
+    {
+      title: "BLOCKCHAIN TECHNOLOGY ",
+      publisher: "Nirali praksahan",
+      year: "2023",
+      coAuthors: [ "Nitin N. Sakhare"," Vijay M. Marathe"," Dr. Anup W. Ingle"," Dr. Pravin G. Gawande" ],
+      link:"https://www.flipkart.com/blockchain-technology-dbatu-semester-7-final-year-b-tech-course-computer-engineering-science-engineering/p/itm1a6aeb6c2942c?pid=9788119116249&lid=LSTBOK9788119116249Q5RX2A&marketplace=FLIPKART&cmpid=content_book_8965229628_gmc"
+    },
+    {
+      title: "Deep Learning ",
+      publisher: "Nirali praksahan",
+      year: "2023",
+      coAuthors: [ " Dr. Kavita P. Moholkar"," Nitin N. Sakhare", "Dr. Nilesh P. Sable"," Dr. Anup W. Ingle"],
+      link:"https://www.flipkart.com/deep-learning-dbatu-semester-7-final-year-b-tech-course-computer-engineering-science-engineering-information-technology/p/itm7753b86928502"
     },
      
   ],
@@ -322,6 +437,12 @@ export default function Home() {
     }
   };
 
+  // function setShowContact(arg0: boolean): void {
+  //   throw new Error('Function not implemented.');
+  // }
+  const [showContact, setShowContact] = useState(false);
+  
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -353,11 +474,13 @@ export default function Home() {
               </div>
               
               <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-                <Button variant="outline">
+                <Link href="/contact">
+                <Button variant="outline" >
+
                   <Mail className="h-4 w-4 mr-2" />
                   Contact Me
-                  
                 </Button>
+                </Link>
                 
               </div>
             </div>
@@ -547,7 +670,7 @@ export default function Home() {
           <TabsContent value="publications">
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
+                <CardTitle className="flex items-center gap-2 ">
                   <FileText className="h-5 w-5" />
                   Research Publications
                 </CardTitle>
@@ -566,16 +689,16 @@ export default function Home() {
                   filteredCount={getFilteredCount()}
                   onClearFilters={handleClearFilters}
                 />
-                <div className="space-y-6">
+                <div className="space-y-6 ">
                   {filteredPublications.length === 0 ? (
-                    <div className="text-center py-8">
+                    <div className="text-center py-8 ">
                       <FileText className="h-12 w-12 text-gray-300 mx-auto mb-4" />
                       <p className="text-gray-500">No publications found matching your search criteria.</p>
                     </div>
                   ) : (
                     filteredPublications.map((pub, index) => (
-                      <div key={index} className="p-6 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
-                        <div className="flex items-start justify-between mb-3">
+                      <div key={index} className="p-6 bg-indigo-100 border border-gray-200 rounded-lg hover:shadow-md transition-shadow ">
+                        <div className="flex items-start justify-between mb-3 ">
                           <div className="flex gap-2">
                             <Badge variant={pub.journal ? 'default' : 'secondary'}>
                               {pub.journal ? 'Journal' : 'Conference'}
@@ -598,15 +721,19 @@ export default function Home() {
                         <p className="text-gray-600 mb-4">{pub.journal || pub.conference} • {pub.year}</p>
                         
                         <div className="flex gap-2">
-                          <Button size="sm" variant="outline">
-                            <ExternalLink className="h-4 w-4 mr-2" />
-                            View Paper
-                          </Button>
-                          <Button size="sm" variant="outline">
-                            <Download className="h-4 w-4 mr-2" />
-                            Download PDF
+                          <Button size="sm" variant="outline" asChild>
+                            <a
+                              href={pub.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center"
+                            >
+                              <ExternalLink className="h-4 w-4 mr-2" />
+                              View Paper
+                            </a>
                           </Button>
                         </div>
+
                       </div>
                     ))
                   )}
@@ -655,10 +782,18 @@ export default function Home() {
                             Co-authors: {book.coAuthors.join(', ')}
                           </p>
                         )}
-                        <Button size="sm" variant="outline">
-                          <ExternalLink className="h-4 w-4 mr-2" />
-                          View Details
+                        <Button size="sm" variant="outline" asChild>
+                          <a
+                            href={book.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center"
+                          >
+                            <ExternalLink className="h-4 w-4 mr-2" />
+                            View Details
+                          </a>
                         </Button>
+
                       </div>
                     ))
                   )}
